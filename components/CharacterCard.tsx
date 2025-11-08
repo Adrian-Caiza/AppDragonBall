@@ -3,7 +3,7 @@ import { useRouter } from "expo-router";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { Character } from "../src/domain/models/Character.model";
-import { globalStyles } from "../src/presentation/styles/globalStyles";
+import { globalStyles, Colors } from "../src/presentation/styles/globalStyles";
 
 interface CharacterCardProps {
     character: Character;
@@ -36,7 +36,21 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
                 <Text style={globalStyles.characterRace}>
                     {character.race} • {character.gender}
                 </Text>
-                <Text style={globalStyles.characterKi}>Ki: {character.ki}</Text>
+                <Text style={globalStyles.characterKi}>
+                    Ki base: {character.ki}</Text>
+                <Text style={globalStyles.characterKi}>
+                    Ki máximo: {character.maxKi}</Text>
+                <Text
+                    style={{
+                        fontSize: 13,
+                        color: Colors.secondary,
+                        marginTop: 4,
+                        fontWeight: "600",
+                    }}
+                    numberOfLines={1}
+                    >
+                    {character.affiliation || "Sin afiliación"}
+                </Text>
             </View>
         </TouchableOpacity>
     );
